@@ -3,10 +3,12 @@ Technical Design Documents
 
 See [Writing a TDD](https://medium.com/machine-words/writing-technical-design-docs-71f446e42f2e) if you are unfamiliar with them.
 
+Remember, TDD's exist to avoid restarting a project multiple times because there is a roadblock that could have been avoided with the proper planning.
+
 ## Do's and Dont's
 
 - Do's:
-  - Write down how you want to achieve your goal in detail. Doing so allows other engineers to contribute ideas you may not have thought of, but it also allows another engineer to pick up where you left off should you be unable to continue.
+  - Before sending your TDD to others for review, take a pass at it from the reviewer's perspective. What questions and/or doubts might you have about this design? Address them right away. Also, think to yourself... if another engineer has to pick this project up, or if you go on vacation, can anyone read this and implement the solution as designed?
   - Divide your work into bite sized phases. Each phase will represent one PR, this helps track which changes broke and allows for smaller (and quicker!) code reviews.
   - Work with someone else if you'd like, you don't have to do this alone!
 
