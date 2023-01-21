@@ -28,5 +28,3 @@ Remember, TDD's exist to avoid restarting a project multiple times because there
 `tdd/` - All TDD's related to firefly will be located in this folder
 
 `TDD_Template.md` - A template you will copy, paste and alter. All TDD's will be based on this template.
-
-`TDD_Example.md` - A ChatGPT generated example using the template above. It's not related to firefly but it's just an example :)
