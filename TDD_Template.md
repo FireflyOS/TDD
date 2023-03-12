@@ -7,6 +7,15 @@ Date: <>
 ### Introduction
 - Provide an overview of the project, including the problem that is being solved, the goals and objectives, and any relevant background information.
 
+### Terminology
+- Explain the meaning of certain abbreviations. (Format: ABBREVIATION = FULL MEANING, MP = Multi Processing)
+
+### GOALS
+- Provide a short list of goal you plan on achieving. Bullet points will suffice.
+
+### NON GOALS
+- Provide a short list of goals that are out-of-scope for this project. Bullet points will suffice.
+
 ### Requirements
 - List the functional and non-functional requirements for the project, including any constraints or assumptions that were made during the planning process.
 
