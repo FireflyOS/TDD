@@ -9,6 +9,7 @@ The introduction of an SMP aware scheduler will allow for faster and concurrent 
 
 ### Terminology
 MP = Multi Processing
+
 SMP = Symmetric Multi Processing
 
 #### GOALS
