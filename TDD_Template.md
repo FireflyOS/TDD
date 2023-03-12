@@ -57,3 +57,6 @@ Date: <>
 
 ### Conclusion
 - Summarize the main points of the document and provide any additional information that is relevant to the project.
+
+### Resources
+- Seeing as this project is intended for learning purposes, you are encouraged to share any resources used to write this TDD.
