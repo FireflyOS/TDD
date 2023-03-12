@@ -13,10 +13,6 @@ MP = Multi Processing
 SMP = Symmetric Multi Processing
 
 #### GOALS
-- Create a symmetric multi-processing scheduler
-- Implement a soft affinity policy
-- Pull migration
-
 - Scheduling algorithms can be changed during compile time with little to no changes to the code.
 - Spend as little time waiting for work as possible.
 - Use as few spinlocks as possible
