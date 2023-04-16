@@ -49,16 +49,31 @@ For this first phase, the main goal is to get each core setup with it's own priv
 
 ### Design
 
-Upon smp initialization, each core receives a predetermined memory address for it's local and private data (variables), the base address of this local data will be stored by leveraging the architecture's gs-base for easy and quick access. We will not store this information in the `AssemblyCpuData` structure to avoid loading large amounts of data from gs-base since per-cpu variables are likely to be accessed frequently. These memory addresses will be fixed in size and determined at link time, similar to linux's PER_CPU() model. Future revisions might allow for the per-cpu memory size to grow and shrink.
-
+Upon smp initialization, each core receives a predetermined memory address for it's local and private data (variables), the base address of this local data will be stored by leveraging the architecture's gs-base for easy and quick access.
 Pseudo code implementation:
 
 ```c++
 // Low level smp handling.
 // This is what the TDD is about
 class Base<typename Store> {
+public:
+    Base() {
+        process_queue = new Store();
+    }
+
+    void add_process() {}
+    void remove_process() {}
+    
+    void on_schedule(Irq irq) {
+        if (load < THRESHOLD)
+            steal_jobs();
+    }
+    
+    void steal_jobs() {}
+
 private:
-    PER_CPU_VARIABLE(Store) process_queue; // This would contains tasks a core would process
+    Store process_queue; // This would contains tasks a core would process
+    int load; // Load percentage of this CPU
 };
 
 // ...
@@ -89,12 +104,10 @@ class SchedulerImpl : Base<priority_queue> {
 #error "No scheduler implementation"
 #endif
 
-void init_smp(AssemblyCpuData* cpu, uint64_t per_cpu_memory) {
-  // Store per-cpu base address
-  write_gs_base(available_gs_base_offset, per_cpu_memory); // Scheduler can be accessed from the per-cpu variable now. I'm not sure if we need this anymore though, because we could simply read_gs_base and get the cpu structure. My only concern with doing it like this is the potential overhead of loading a large structure from gs-base (i.e. memory) and only using a portion of it very frequently.
-
-  cpu->scheduler = allocate_from_this_per_cpu_memory<SchedulerImpl>(); // Create and store the scheduler in the per-cpu area to create a true, private variable. Allocating it via 'new' might be unsafe as the memory area 'new' manages is not protected where as per-cpu variables are completely private and hidden from any allocators. That is to say allocators have no idea this memory even exists.
-  write_gs_base(available_gs_base_offset_2, cpu);
+void init_smp(AssemblyCpuData* cpu) {
+  // ...
+  cpu->scheduler = allocate(sizeof(SchedulerImpl));
+  write_gs_base(gs_base_offset, cpu);
 }
 
 ```
