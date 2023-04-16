@@ -29,7 +29,7 @@ SMP = Symmetric Multi Processing
 
 ### Requirements
 
-It is assumed the that computer utilizing this scheduler has 2 or more healthy and available processing units, each of which are required to be in long mode with all initialization complete and awaiting an IPI in an Idle loop to beging scheduling tasks.
+It is assumed that the computer utilizing this scheduler has 2 or more healthy and available processing units, each of which are required to be in long mode with all initialization complete and awaiting an IPI in an Idle loop to begin scheduling tasks.
 
 ### Architecture
 
